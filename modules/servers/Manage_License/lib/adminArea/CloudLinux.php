@@ -1,6 +1,7 @@
 <?php
-$licenseType = explode( "|", $params['configoption1'] )[1];
-if ( $licenseType == "CloudLinux" ) {
+//$licenseType = explode( "|", $params['configoption1'] )[1];
+//if ( $licenseType == "CloudLinux" ) {
+var_dump($api->response);
 	$LicenseInfo = array(
 		"License Info: " =>
 			"OS : <b>" . $api->response['server_info']
@@ -15,9 +16,9 @@ if ( $licenseType == "CloudLinux" ) {
                         </div>"
 	);
 
-} else if ( $licenseType == "KernelCare" ) {
-	$LicenseInfo = array( "License Info: " => $api->response['status'] );
-} else if ( $licenseType == "Imunify360" ) {
-	$LicenseInfo = array( "License Info: " => $api->response['status'] );
-}
+//} else if ( $licenseType == "KernelCare" ) {
+//	$LicenseInfo = array( "License Info: " => $api->response['status'] );
+//} else if ( $licenseType == "Imunify360" ) {
+//	$LicenseInfo = array( "License Info: " => $api->response['status'] );
+//}
 

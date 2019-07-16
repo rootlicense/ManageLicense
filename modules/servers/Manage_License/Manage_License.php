@@ -63,12 +63,12 @@ function Manage_License_CreateAccount(array $params)
             }
             switch (explode("|", $params['configoption1'])[0]) {
                 case 'cPanel':
+	            case "CloudLinux":
                     DB::table('tblhosting')->where('id', '=', $params['serviceid'])->update(['domain' => $params["customfields"]["IP"]]);
                     return 'success';
                     break;
                 case 'DirectAdmin':
                 case 'Plesk':
-                case "CloudLinux":
                 case 'LiteSpeed':
                     DB::table('tblhosting')->where('id', '=', $params['serviceid'])->update(
                         ['username' => $api->response['licensekey'],
@@ -116,6 +116,7 @@ function Manage_License_SuspendAccount(array $params)
             return $e->getMessage();
         }
     }
+    return "success";
 }
 
 function Manage_License_UnsuspendAccount(array $params)
@@ -256,12 +257,12 @@ function Manage_License_Reissue(array $params)
 
 function Manage_License_ClientAreaCustomButtonArray($params)
 {
-    $language = strtolower($_SESSION['Language']);
-    $lang = ROOTDIR . DS . 'lang' . DS . $language . '.php';
-
-    if (!file_exists($lang))
-        $lang = ROOTDIR . DS . 'lang' . DS . 'farsi.php';
-    include($lang);
+//	$language = strtolower($_SESSION['Language']);
+//	$lang = __DIR__. DS . 'lang' . DS . $language . '.php';
+//
+//	if (!file_exists($lang))
+//		$lang = __DIR__ . DS . 'lang' . DS . 'farsi.php';
+	include($GLOBALS['language']);
 
     switch (explode("|", $params['configoption1'])[0]) {
         case 'SolusVM':
@@ -501,7 +502,7 @@ function Manage_License_ClientArea(array $params)
 {
 
     if ($params['addonId'] == 0) {
-require_once ($GLOBALS['language']);
+require ($GLOBALS['language']);
         try {
 //$errorTem= $GLOBALS['dir'].'templates'.DS.'error.tpl';
 //var_dump($GLOBALS['language']);
@@ -811,10 +812,12 @@ function Manage_License_change_ip(array $params)
                 if (!empty($_REQUEST['changeIP'])) {
                     $params['changeIP'] = $_REQUEST['changeIP'];
                     $params['action'] = "changeIp";
+
                     $api = new manageLicense($params);
                     if ($api->error == true) {
                         echo json_encode($api);
                     } else {
+	                    logActivity($api->response);
                         if ($api->response['chageipok']) {
                             update_query('tblhosting', array('domain' => $_REQUEST['changeIP'],),
                                 array('id' => $params["serviceid"],));

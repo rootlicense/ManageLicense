@@ -75,11 +75,11 @@
                             {for $i=1 to $licenseInfo.domaincount}
                                 {if $licenseInfo.productName|strpos:"WildCard" !== false}
                                     <label for="note"
-                                           class="text-right "></label>
+                                           class="text-right ">{$LANG.WildCardNote}</label>
                                 {/if}
                                 <div class="form-group {if $licenseInfo.domaincount != 1}col-md-6{/if} ">
                                     <label for="domain[{$i}]"> {$LANG.Domain} {if $licenseInfo.domaincount != 1}{$i}{/if}</label>
-                                    <input class="form-control" style="direction: ltr" name="domain[{$i}]"
+                                    <input class="form-control" style="direction: ltr;font-family: Tahoma" name="domain[{$i}]"
                                            value="{if $i == 1}{$licenseInfo.mainDomain}{else}{$post.domain[$i]}{/if}">
                                 </div>
                             {/for}
@@ -118,7 +118,7 @@
                         </div>
                     </div>
                     <form class="form" id="approvers_form" method="post">
-                        {if $licenseInfo.domaincount == 1}
+                        {if $licenseInfo.domaincount == 1 && count($licenseInfo.approvers.Approver) != 1}
                             <div class="row">
                                 <div class="form-group col-md-2  text-center">
                                     <label for="{$licenseInfo.approvers.Approver.FQDN}">{$licenseInfo.approvers.Approver.FQDN}</label>
@@ -701,11 +701,16 @@
                                                 <strong>{$LANG.CertificateX509Cert}</strong></td>
                                             {* <td class="text-center">{$record.reissueDetail.certificateDetails.X509Cert}</td>*}
                                             <td class="text-center"
-                                                style="text-align: left;direction: ltr; font-family: Tahoma;"><code
+                                                {if $record.reissueDetail.orderStatus.orderStatus != "ENROLLED"}
+                                                    >
+                                                    {$LANG.waitENROLLED}
+                                               {else}
+                                                style="text-align: left;direction: ltr; font-family: Tahoma;">
+                                                <code
                                                         style="font-family: Tahoma;">-----BEGIN
                                                     CERTIFICATE-----<br>{$record.reissueDetail.certificateDetails.X509Cert}
                                                     <br>-----END CERTIFICATE-----</code></td>
-
+                                            {/if}
                                         </tr>
                                         </tbody>
                                     </table>

@@ -157,6 +157,13 @@ class action {
                     let postPach = patch.substr(v);
                     let urlParams = new URLSearchParams(location.search);
                     let id = urlParams.get('id');
+                     if(id === null){
+                          id = urlParams.get('productselect');
+                     }
+                         // else{
+                     //     let id = urlParams.get('id');
+                     //
+                     // }
                     let userid = urlParams.get("userid");
                     jQuery.post("?userid=" + userid + "&id=" + id + "" + '&sendType=ajax', {
                             'token': $("input[name='token']").val(),

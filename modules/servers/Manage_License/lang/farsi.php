@@ -43,6 +43,7 @@ $_LANG['Fraud'] = "سرویس شما Fraud شده است";
 
 //cloudlinux language
 $_LANG['cln_os'] = "نوع سیستم عامل";
+$_LANG['cln_lastCheck'] = "آخرین بروزرسانی";
 $_LANG['cln_changeip'] = "تغییر IP";
 $_LANG['cln_btn_change'] = "تغییر";
 
@@ -75,6 +76,8 @@ $_LANG['Email'] = "ایمیل";
 $_LANG['RenewHead'] = "بعد از وارد کردن CSR با روش ای درج شده در زیر، باید مجددا دامنه های را اعتبار سنجی کنید";
 $_LANG['PostalCode'] = "کدپستی";
 $_LANG['PhoneNumber'] = "تلفن";
+$_LANG['WildCardNote'] = "لطفا دامنه را بدون درج *. وارد نمایید";
+
 $_LANG['PhoneNumber2'] = "تلفن2";
 $_LANG['CertificateX509Cert'] = "گواهی X509Cert ";
 $_LANG['ReissueDetails'] = "مشخصات reissue";
@@ -103,6 +106,7 @@ $_LANG['Wildcardform'] = " شما Wildcard خریداری کرده اید دام
 $_LANG['Domain'] = "دامنه";
 $_LANG['ChangeApprovers'] = "تغییر روش تایید";
 $_LANG['Submit'] = "ثبت";
+$_LANG['waitENROLLED'] = "هنوز گواهی از سمت CA صادر نشده است ، لطفا منتظر بمانید";
 $_LANG['Renew'] = "تمدید";
 $_LANG['Reissue'] = "Reissue";
 $_LANG['MainDomain'] = "دامنه اصلی";

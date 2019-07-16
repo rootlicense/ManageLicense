@@ -29,7 +29,7 @@
 
             <tr role="row" class="odd">
                 <td class="sorting_1"><strong>{$LANG.clientareahostingregdate}</strong></td>
-                <td class="text-center">{$regdate}</td>
+                <td class="text-center">{$regdate|shdate}</td>
             </tr>
             <tr role="row" class="odd">
                 <td class="sorting_1"><strong>{$LANG.orderproduct}</strong></td>
@@ -81,15 +81,14 @@
             <tr role="row" class="odd">
                 <td class="sorting_1"><strong> number of change</strong></td>
                 <td class="text-center"> {$licenseInfo.numberOfChange}</td>
-            </tr>
-
+            </tr> 
             <tr role="row" class="odd">
                 <td class="sorting_1"><strong> {$LANG.recurringamount}</strong></td>
                 <td class="text-center"> {$recurringamount}</td>
             </tr>
             <tr role="row" class="odd">
                 <td class="sorting_1"><strong> {$LANG.clientareahostingnextduedate}</strong></td>
-                <td class="text-center"> {$nextduedate}</td>
+                <td class="text-center"> {$nextduedate|shdate}</td>
             </tr>
             <tr role="row" class="odd">
                 <td class="sorting_1"><strong> {$LANG.orderbillingcycle}</strong></td>
